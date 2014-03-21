@@ -56,7 +56,7 @@
 #include <QTimer>
 #include <QDragEnterEvent>
 #include <QUrl>
-//for qt5 2014-3-21
+//For qt5 2014-3-21
 #include <QMimeData>
 #include <iostream>
 
