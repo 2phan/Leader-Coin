@@ -1143,7 +1143,10 @@ void MapPort()
 // The first name is used as information source for addrman.
 // The second name should resolve to a list of seed addresses.
 static const char *strDNSSeed[][2] = {
-
+        {"204.44.65.227","204.44.65.227"},
+        {"204.44.65.226","204.44.65.226"},
+        {"204.44.65.221","204.44.65.221"},
+   { NULL,NULL}
 };
 
 void ThreadDNSAddressSeed(void* parg)
@@ -1176,9 +1179,10 @@ void ThreadDNSAddressSeed2(void* parg)
 
     if (!fTestNet)
     {
-        printf("Loading addresses from DNS seeds (could take a while)\n");
+        printf("Loading addresses from DNS seeds (could take a while) size: %d \n",ARRAYLEN(strDNSSeed));
 
-        for (unsigned int seed_idx = 0; seed_idx < ARRAYLEN(strDNSSeed); seed_idx++) {
+        //for (unsigned int seed_idx = 0; seed_idx < ARRAYLEN(strDNSSeed); seed_idx++) {
+        for (unsigned int seed_idx = 0; strDNSSeed[seed_idx][0] != NULL; seed_idx++) {
             if (GetNameProxy()) {
                 AddOneShot(strDNSSeed[seed_idx][1]);
             } else {
@@ -1213,7 +1217,9 @@ void ThreadDNSAddressSeed2(void* parg)
 
 
 
-unsigned int pnSeed[] = {};
+unsigned int pnSeed[] = {
+    0xCC2C41E3,0xCC2C41E2,0xCC2C41DD
+};
 
 void DumpAddresses()
 {

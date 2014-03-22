@@ -1085,9 +1085,12 @@ void CreatePidFile(const boost::filesystem::path &path, pid_t pid)
 bool RenameOver(boost::filesystem::path src, boost::filesystem::path dest)
 {
 #ifdef WIN32
+    printf("win32 %s ",src.string().c_str());
+    printf("%s  ",dest.string().c_str());
     return MoveFileExA(src.string().c_str(), dest.string().c_str(),
                       MOVEFILE_REPLACE_EXISTING);
 #else
+    printf("else : %s %s",src.string().c_str(), dest.string().c_str());
     int rc = std::rename(src.string().c_str(), dest.string().c_str());
     return (rc == 0);
 #endif /* WIN32 */
