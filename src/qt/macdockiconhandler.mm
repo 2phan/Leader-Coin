@@ -47,8 +47,11 @@ extern void qt_mac_set_dock_menu(QMenu*);
 MacDockIconHandler::MacDockIconHandler() : QObject()
 {
     NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+#if QT_VERSION < 0x050000
+    this->m_dockIconClickEventHandler = (objc_object *) [[DockIconClickEventHandler alloc] initWithDockIconHandler:this];
+#else
     this->m_dockIconClickEventHandler = [[DockIconClickEventHandler alloc] initWithDockIconHandler:this];
-
+#endif
     this->m_dummyWidget = new QWidget();
     this->m_dockMenu = new QMenu(this->m_dummyWidget);
     qt_mac_set_dock_menu(this->m_dockMenu);
