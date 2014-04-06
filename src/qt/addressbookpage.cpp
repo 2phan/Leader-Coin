@@ -131,15 +131,17 @@ void AddressBookPage::setModel(AddressTableModel *model)
     ui->tableView->setModel(proxyModel);
     ui->tableView->sortByColumn(0, Qt::AscendingOrder);
 
+#if QT_VERSION < 0x050000
     // Set column widths
-  //  ui->tableView->horizontalHeader()->resizeSection(
-   //         AddressTableModel::Address, 320);
-  //  ui->tableView->horizontalHeader()->setResizeMode(
-  //          AddressTableModel::Label, QHeaderView::Stretch);
+    ui->tableView->horizontalHeader()->resizeSection(
+            AddressTableModel::Address, 320);
+    ui->tableView->horizontalHeader()->setResizeMode(
+            AddressTableModel::Label, QHeaderView::Stretch);
+#else
     //2014-3-21
     ui->tableView->horizontalHeader()->setSectionResizeMode(AddressTableModel::Label, QHeaderView::Stretch);
     ui->tableView->horizontalHeader()->setSectionResizeMode(AddressTableModel::Address, QHeaderView::ResizeToContents);
-
+#endif
     connect(ui->tableView->selectionModel(), SIGNAL(selectionChanged(QItemSelection,QItemSelection)),
             this, SLOT(selectionChanged()));
 
