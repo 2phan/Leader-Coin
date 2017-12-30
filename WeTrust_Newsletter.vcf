@@ -1,0 +1,10 @@
+BEGIN:VCARD
+VERSION;TYPE=WORK:3.0
+FN;CHARSET=UTF-8:WeTrust support
+N;CHARSET=UTF-8:WeTrust support;;;;
+PROFILE:VCARD
+ADR;CHARSET=UTF-8:;;39120 Argonaut Way #560;Fremont;CA;94538;USA
+EMAIL:support@wetrust.io
+ORG;CHARSET=UTF-8:WeTrust
+URL:http://wetrust.io
+END:VCARD
