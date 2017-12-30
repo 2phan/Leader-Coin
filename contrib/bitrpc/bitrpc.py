@@ -299,6 +299,8 @@ elif cmd == "validateaddress":
 		print access.validateaddress(addr)
 	except:
 		print "\n---An error occurred---\n"
+		else:
+	print "Command not found or not supported"
 
 elif cmd == "walletpassphrase":
 	try:
